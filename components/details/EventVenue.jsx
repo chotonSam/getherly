@@ -1,7 +1,7 @@
 const EventVenue = ({ location }) => {
   return (
-    <div className="overflow-hidden rounded-lg col-span-2 bg-[#242526]">
-      <div className="w-full">
+    <div className="overflow-hidden rounded-lg  bg-[#242526]">
+      <div className="max-w-[500px]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d9563.048507081372!2d89.4311410274292!3d25.90038347256725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1711180232846!5m2!1sen!2sbd"
           width="600"

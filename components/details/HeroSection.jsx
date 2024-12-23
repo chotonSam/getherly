@@ -10,7 +10,7 @@ const HeroSection = async ({ eventInfo }) => {
         <Image
           src={eventInfo?.imageUrl}
           alt="Event 1"
-          className="h-[450px] mx-auto"
+          className="max-h-[450px] w-full sm:w-auto mx-auto"
           width={900}
           height={900}
           placeholder="blur"
@@ -18,7 +18,7 @@ const HeroSection = async ({ eventInfo }) => {
         />
       </div>
 
-      <div className="flex items-end">
+      <div className="flex flex-wrap items-end">
         <div className="flex-auto py-4">
           <h1 className="font-bold text-2xl">{eventInfo?.name}</h1>
           <p className="text-[#9C9C9C] text-base mt-1">{eventInfo?.location}</p>

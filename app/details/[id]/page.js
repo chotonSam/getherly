@@ -24,7 +24,7 @@ const EventDetailsPage = async ({ params: { id } }) => {
     <>
       <HeroSection eventInfo={eventInfo} />
       <section class="container">
-        <div class="grid grid-cols-5 gap-12 my-12">
+        <div class="flex flex-wrap justify-between gap-12 my-12 ">
           <EventDetails details={eventInfo?.details} swags={eventInfo?.swags} />
           <EventVenue location={eventInfo?.location} />
         </div>

@@ -29,7 +29,7 @@ export default function Search() {
       <input
         type="text"
         placeholder="Search..."
-        className="bg-[#27292F] border border-[#CCCCCC]/20 py-1 px-2 rounded-md"
+        className="bg-[#27292F] border border-[#CCCCCC]/20 py-1 px-2 rounded-md w-64"
         onChange={(e) => {
           e.preventDefault();
           handleSearch(e.target.value);
