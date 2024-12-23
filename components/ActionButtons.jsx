@@ -1,9 +1,13 @@
 "use client";
 
-import { addInterestedEvent } from "@/app/actions";
 import { useAuth } from "@/app/hooks/useAuth";
+import { useState } from "react";
+
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
+
+import { useTransition } from "react";
+
+import { addInterestedEvent } from "@/app/actions";
 
 const ActionButtons = ({
   eventId,
@@ -11,16 +15,15 @@ const ActionButtons = ({
   goingUserIds,
   fromDetails,
 }) => {
-  const router = useRouter();
-
   const { auth } = useAuth();
 
+  const router = useRouter();
+
   const isInterested = interestedUserIds?.find((id) => id === auth?.id);
-  const isGoring = goingUserIds?.find((id) => id === auth?.id);
+  const isGoing = goingUserIds?.find((id) => id === auth?.id);
 
   const [interested, setInterested] = useState(isInterested);
-  const [going, setGoing] = useState(isInterested);
-
+  const [going, setGoing] = useState(isGoing);
   const [isPending, startTransition] = useTransition();
 
   const toggleInterest = async () => {
@@ -40,13 +43,8 @@ const ActionButtons = ({
     }
   };
 
-  const disabled = auth && going;
   return (
-    <div
-      className={`justify-self-end w-full flex gap-4 mt-4 ${
-        fromDetails && "flex-1"
-      }`}
-    >
+    <div className={`w-full flex gap-4 mt-4 ${fromDetails && "flex-1"}`}>
       <button
         onClick={() =>
           startTransition(() => {
@@ -59,15 +57,10 @@ const ActionButtons = ({
       >
         Interested
       </button>
-
       <button
-        disabled={disabled} // Use the variable here
+        disabled={auth && going}
         onClick={markGoing}
-        className={`text-center w-full py-2 px-2 rounded-md border border-[#5F5F5F]/50 shadow-sm transition-colors active:translate-y-1 ${
-          disabled
-            ? "bg-green-600 cursor-default" // Disabled styles
-            : "bg-[#464849] hover:bg-[#3C3D3D] cursor-pointer" // Enabled styles
-        }`}
+        className=" text-center w-full bg-[#464849] py-2 px-2 rounded-md border border-[#5F5F5F]/50 shadow-sm cursor-pointer hover:bg-[#3C3D3D] transition-colors active:translate-y-1"
       >
         Going
       </button>

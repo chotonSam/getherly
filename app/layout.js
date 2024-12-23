@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import connectMongo from "@/services/mongo";
+import { dbConnect } from "@/services/mongo";
 import localFont from "next/font/local";
 import "./globals.css";
 import AuthProvider from "./providers/AuthProvider";
@@ -22,9 +22,9 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  await connectMongo();
+  await dbConnect();
 
-  console.log(await connectMongo());
+  console.log(await dbConnect());
   return (
     <html lang="en">
       <body
