@@ -22,7 +22,9 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  await dbConnect();
+  dbConnect().catch((error) =>
+    console.error("Database connection error:", error)
+  );
 
   console.log(await dbConnect());
   return (
